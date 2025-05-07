@@ -1,3 +1,5 @@
+## youtubeAPIの課金額の高さ(予想)からプロジェクトの進行を断念
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
