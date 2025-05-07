@@ -20,6 +20,8 @@ function getGroupColor(group: string) {
       return { border: 'border-pink-500', bg: 'bg-pink-500', text: 'text-white' };
     case 'nijisanji':
       return { border: 'border-purple-500', bg: 'bg-purple-500', text: 'text-white' };
+    case 'vspo':
+      return { border: 'border-blue-500', bg: 'bg-blue-500', text: 'text-white' };
     default:
       return { border: 'border-gray-500', bg: 'bg-gray-500', text: 'text-white' };
   }
@@ -99,7 +101,16 @@ export default function Home() {
                 />
                 <h2 className="text-lg font-semibold">{schedule.title}</h2>
                 <p>{schedule.name} ({schedule.vtuber_group})</p>
-                <p>{new Date(schedule.start_time).toLocaleString()}</p>
+                <p>
+                  {new Date(schedule.start_time).toLocaleString('ja-JP', {
+                    timeZone: 'Asia/Tokyo',
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                  })}
+                </p>
                 {schedule.view_count && <p>Views: {schedule.view_count}</p>}
               </a>
             );

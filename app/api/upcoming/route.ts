@@ -5,7 +5,10 @@ function formatDateTime(isoString: string | undefined): string | null {
   if (!isoString) return null;
   const date = new Date(isoString);
   if (isNaN(date.getTime())) return null;
-  return date.toISOString().replace('T', ' ').replace('Z', '').slice(0, 19);
+  // JST (UTC+9) に変換
+  const jstOffset = 9 * 60; // 9時間（分単位）
+  const jstDate = new Date(date.getTime() + jstOffset * 60 * 1000);
+  return jstDate.toISOString().replace('T', ' ').replace('Z', '').slice(0, 19);
 }
 
 export async function GET() {
@@ -20,6 +23,7 @@ export async function GET() {
       'UC1DCedRgGHBdm81E1llLhOQ', // 兎田ぺこら
       'UCdn5BQ06XqgXoAxIhbqw5Rg', // 白上フブキ
       'UC9V3Y3_uzU5xD0n7cHLZfq', // 星川サラ
+      'UCiMG6VdScBabPhJ1ZtaVmbw', // 花芽なずな
     ];
 
     const videoIds: string[] = [];
